@@ -1,0 +1,21 @@
+#this function is used to list down all the files required for the stock analysis. 
+#Required in the selectInput(choices param)
+listfiles <- function(){
+  
+    files <- Sys.glob("stocks/*.csv")
+    
+    l = list()
+    for(i in 1:length(files)){
+      l[[i]] = strsplit(strsplit(files[i],"/")[[1]][2],".csv")
+    }
+ #  head(l)
+   # head(vect)
+  
+    vect = c()
+    for(i in 1:length(files)){
+      vect[i] = l[[i]][[1]][1]     
+    }
+    vect
+    return (vect)
+  
+}
